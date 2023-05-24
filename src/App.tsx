@@ -104,16 +104,18 @@ function App(): JSX.Element {
 			/>
 			<div className='tasksContainer'>
 				<ul className='taskList'>
-					{filterLi.map(task => (
-						<Tasks
-							key={task.id}
-							id={task.id}
-							taskName={task.taskName}
-							completed={task.completed}
-							handleClick={e => handleClick(e, task.id)}
-							handleDelete={() => handleDelete(task.id)}
-						/>
-					))}
+					{filterLi
+						.map(task => (
+							<Tasks
+								key={task.id}
+								id={task.id}
+								taskName={task.taskName}
+								completed={task.completed}
+								handleClick={e => handleClick(e, task.id)}
+								handleDelete={() => handleDelete(task.id)}
+							/>
+						))
+						.reverse()}
 				</ul>
 
 				<TaskTools

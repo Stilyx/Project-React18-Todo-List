@@ -1,0 +1,58 @@
+.tasks {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	width: 100%;
+	align-items: center;
+}
+
+.taskList li {
+	width: 100%;
+	height: auto;
+	word-wrap: break-word;
+	color: var(--li-input-color);
+	font-size: 18px;
+	font-weight: 400;
+	padding: 24px 72px;
+	border-bottom: 1px solid var(--border);
+	list-style: none;
+	position: relative;
+	cursor: pointer;
+}
+
+.taskList li::before {
+	content: var(--circle);
+	position: absolute;
+	z-index: 2;
+	left: 24px;
+}
+
+.taskList li:hover::before {
+	content: url(../../public/assets/buttons/hover-circle.png);
+}
+
+.taskList .tasks .delete {
+	content: url(../../public/assets/buttons/close-button.png);
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	right: 24px;
+	opacity: 0;
+	cursor: pointer;
+}
+.taskList .tasks:hover .delete {
+	opacity: 1;
+}
+
+.taskList li.checked {
+	text-decoration: line-through;
+	color: var(--li-selected-color);
+}
+
+.taskList li.checked::before {
+	content: url(../../public/assets/buttons/checked-circle.png);
+}
+
+.taskList .tasks:has(li.checked) .delete {
+	opacity: 1;
+}

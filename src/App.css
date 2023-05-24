@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Josefin Sans', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root .theme-light {
+	--background: url(../public/assets/background/light-background.png);
+	--logo: url(../public/assets/logo/light-logo.png);
+	--body-background: white;
+	--container-background: #ffffff;
+	--li-input-color: #494c6b;
+	--li-selected-color: #d1d2da;
+	--inputs-color: #9495a5;
+	--border: #e3e4f1;
+	--circle: url(../public/assets/buttons/normal-light-circle.png);
+	transition: 0.3s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+:root .theme-dark {
+	--background: url(../public/assets/background/dark-background.png);
+	--logo: url(../public/assets/logo/dark-logo.png);
+	--body-background: #171823;
+	--container-background: #25273d;
+	--li-input-color: #c8cbe7;
+	--li-selected-color: #4d5067;
+	--inputs-color: #5b5e7e;
+	--border: #393a4b;
+	--circle: url(../public/assets/buttons/normal-dark-circle.png);
+	transition: 0.3s;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+:root {
+	--background: black;
 }
 
-.App-link {
-  color: #61dafb;
+body {
+	background-color: var(--body-background);
+	background-image: var(--background);
+	background-repeat: no-repeat;
+	background-size: 100% 40%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 540px;
+}
+
+.tasksContainer {
+	background-color: var(--container-background);
+	width: 100%;
+	border-radius: 5px;
+	height: auto;
+	box-shadow: 3px 5px rgba(0, 0, 0, 0.082);
+}
+
+.taskList {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 16px;
+	height: 350px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+@media (max-width: 600px) {
+	body {
+		-webkit-tap-highlight-color: transparent;
+	}
+	.container {
+		height: 100vh;
+		width: 327px;
+	}
+
+	.tasksContainer {
+		width: 327px;
+		position: relative;
+	}
 }

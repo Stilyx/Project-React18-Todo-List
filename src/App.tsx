@@ -57,19 +57,18 @@ function App(): JSX.Element {
 		}
 	}, [todo, filterProduct]);
 
-	const handleChange = (event: ChangeEvent<HTMLInputElement>): void =>
-		setTask(event.target.value.trim());
+	const handleChange = (e: ChangeEvent<HTMLInputElement>): void => setTask(e.target.value);
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const randomId = () => Math.floor(Math.random() * 10000);
 		const newTask = {id: randomId(), taskName: task, completed: false};
 
-		if (newTask.taskName !== '') {
-			setTodo([...todo, newTask]);
-			setFilterLi([...todo, newTask]);
-			setTask('');
-		}
+		if (newTask.taskName.trim() === '') return;
+
+		setTodo([...todo, newTask]);
+		setFilterLi([...todo, newTask]);
+		setTask('');
 	};
 
 	const handleDelete = (targetID: number) => {
@@ -101,7 +100,7 @@ function App(): JSX.Element {
 			<TaskForm
 				handleSubmit={(e: FormEvent<HTMLFormElement>) => handleSubmit(e)}
 				task={task}
-				handleChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
+				handleChange={e => handleChange(e)}
 			/>
 			<div className='tasksContainer'>
 				<ul className='taskList'>

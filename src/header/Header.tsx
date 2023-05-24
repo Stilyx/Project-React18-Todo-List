@@ -5,10 +5,7 @@ import React from 'react';
 import './Header.css';
 
 // interfaces
-
-interface IHeader {
-	changeTheme: () => void;
-}
+import {IHeader} from '../interfaces/IHeader';
 
 function Header({changeTheme}: IHeader) {
 	return (

@@ -56,3 +56,17 @@
 .taskList .tasks:has(li.checked) .delete {
 	opacity: 1;
 }
+
+@media (max-width: 600px) {
+	.taskList li:hover::before {
+		pointer-events: none;
+		content: var(--circle);
+	}
+
+	.taskList li.checked::before {
+		content: url(../../public/assets/buttons/checked-circle.png);
+	}
+	.taskList .tasks:hover .delete {
+		opacity: 0;
+	}
+}

@@ -54,6 +54,7 @@
 }
 
 .taskList .tasks:has(li.checked) .delete {
+	display: flex;
 	opacity: 1;
 }
 
@@ -67,6 +68,7 @@
 		content: url(../../public/assets/buttons/checked-circle.png);
 	}
 	.taskList .tasks:hover .delete {
+		display: none;
 		opacity: 0;
 	}
 }

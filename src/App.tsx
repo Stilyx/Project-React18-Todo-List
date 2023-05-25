@@ -28,31 +28,12 @@ function App(): JSX.Element {
 		if (filterProduct === 'all') return setFilterLi([...todo]);
 
 		if (filterProduct === 'active') {
-			setFilterLi([
-				...todo.filter(task => {
-					if (task.completed === false) {
-						return {
-							taskName: task.taskName,
-							id: task.id,
-							completed: task.completed
-						};
-					}
-					return null;
-				})
-			]);
+			setFilterLi([...todo.filter(({completed}) => (completed === false ? {...todo} : null))]);
 		}
+
 		if (filterProduct === 'completed') {
 			return setFilterLi([
-				...todo.filter(task => {
-					if (task.completed === true) {
-						return {
-							taskName: task.taskName,
-							id: task.id,
-							completed: task.completed
-						};
-					}
-					return null;
-				})
+				...todo.filter(({completed}) => (completed === true ? {...todo} : null))
 			]);
 		}
 	}, [todo, filterProduct]);
@@ -76,7 +57,7 @@ function App(): JSX.Element {
 		setTodo(deleteTarget);
 	};
 
-	const handleClick = (e: MouseEvent, targetID: number) => {
+	const handleClick = (targetID: number) => {
 		const newTasks = todo.map(task => {
 			if (task.id === targetID) return {...task, completed: !task.completed};
 			return task;
@@ -111,7 +92,7 @@ function App(): JSX.Element {
 								id={task.id}
 								taskName={task.taskName}
 								completed={task.completed}
-								handleClick={e => handleClick(e, task.id)}
+								handleClick={() => handleClick(task.id)}
 								handleDelete={() => handleDelete(task.id)}
 							/>
 						))

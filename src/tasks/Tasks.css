@@ -10,7 +10,7 @@
 	width: 100%;
 	height: auto;
 	word-wrap: break-word;
-	color: var(--li-input-color);
+	color: var(--li-text-color);
 	font-size: 18px;
 	font-weight: 400;
 	padding: 24px 72px;
@@ -46,7 +46,7 @@
 
 .taskList li.checked {
 	text-decoration: line-through;
-	color: var(--li-selected-color);
+	color: var(--li-text-checked-color);
 }
 
 .taskList li.checked::before {

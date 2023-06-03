@@ -1,46 +1,64 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2 align='center'>Projeto Todo List</h2>
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+<div align='center'>
+  
+![Todo-List-Light-Version](https://github.com/Stilyx/Project-React18-Todo-List/assets/109632184/5937d61f-1fdc-4397-8122-3eb23449dc6e)
+![Todo-List-Dark-Version](https://github.com/Stilyx/Project-React18-Todo-List/assets/109632184/2e923dd3-b129-4cbf-a0e9-06d98e7b6296)
+  
+ <img src='https://github.com/Stilyx/Project-React18-Todo-List/assets/109632184/33c92b9f-fadc-4304-bff0-04a8215b17ca' />
+ <img src='https://github.com/Stilyx/Project-React18-Todo-List/assets/109632184/a7275716-cad7-4e7d-9a8e-7046195d995a' /> 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+</div>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  <h2>
+  Figma Utilizado
+  </h2>
+  
+  - <a href='https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW' target='_blank'>Todo List</a>
+  
+</div>  
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  
+  <div>
+  
+  <h2> Sobre </h2>  
+ 
+  <h3 > Anteriormente eu fiz o mesmo Todo List, porém, usando Javascript puro. Agora eu resolvi fazer novamente usando React com Typescript. </h3> 
+  
+  <h3> O Projeto possui as seguintes funcionalidades:</h3> 
+  
+  - localStorage
+  > Ao sair do site, todas as suas tarefas ficarão salvas no localStorage, junto com o thema que foi usado anteriormente
+  
+ 
+  
+  <h2> Tecnologias Utilizadas </h2>
+  
+ - <a href='https://www.typescriptlang.org/' target='_blank'>Typescript</a>
+ - <a href='https://www.typescriptlang.org/pt/docs/handbook/react.html' target='_blank'>React.tsx</a>
+  
+ </div 
+  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h2> Configuração para uso do projeto </h2>
 
-### `npm run eject`
+```
+# Para clonar
+$ git clone https://github.com/Stilyx/Project-React18-Todo-List.git
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Para instalar todas as dependencias do projeto
+$ yarn install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Caso precise fazer um migrations do seu banco de dados
+$ yarn migrate
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Para iniciar o servidor local em seu equipamento
+$ yarn dev
+```

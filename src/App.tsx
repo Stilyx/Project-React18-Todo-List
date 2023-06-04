@@ -28,7 +28,9 @@ function App(): JSX.Element {
 		if (filterProduct === 'all') return setFilterLi([...todo]);
 
 		if (filterProduct === 'active') {
-			setFilterLi([...todo.filter(({completed}) => (completed === false ? {...todo} : null))]);
+			return setFilterLi([
+				...todo.filter(({completed}) => (completed === false ? {...todo} : null))
+			]);
 		}
 
 		if (filterProduct === 'completed') {

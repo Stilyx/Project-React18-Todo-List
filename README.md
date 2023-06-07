@@ -42,6 +42,8 @@
   
  - <a href='https://www.typescriptlang.org/' target='_blank'>Typescript</a>
  - <a href='https://www.typescriptlang.org/pt/docs/handbook/react.html' target='_blank'>React.tsx</a>
+ - <a href="https://jestjs.io/pt-BR/docs/getting-started" target='_blank'>Jest</a>
+  - <a href="https://testing-library.com/" target='_blank'>Testing Library</a>
   
  </div 
   

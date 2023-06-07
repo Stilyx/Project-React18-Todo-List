@@ -1,39 +1,39 @@
-import React, {useState, ChangeEvent, FormEvent, MouseEvent, useEffect} from 'react';
+import React, {useState, ChangeEvent, FormEvent, MouseEvent, useEffect} from "react";
 
 // Style
-import './App.css';
+import "./App.css";
 
 // Components
-import Header from './header/Header';
-import TaskForm from './taskForm/TaskForm';
-import Tasks from './tasks/Tasks';
-import TaskTools from './taskTools/TaskTools';
+import Header from "./header/Header";
+import TaskForm from "./taskForm/TaskForm";
+import Tasks from "./tasks/Tasks";
+import TaskTools from "./taskTools/TaskTools";
 
 // Utils
-import {getLocalStorage} from './utils/getTasksInLocalStorage';
-import {changeTheme} from './utils/changeTheme';
+import {getLocalStorage} from "./utils/getTasksInLocalStorage";
+import {changeTheme} from "./utils/changeTheme";
 
 // Interfaces
-import {ITask} from './interfaces/ITask';
+import {ITask} from "./interfaces/ITask";
 
 function App(): JSX.Element {
-	const [task, setTask] = useState<string>('');
+	const [task, setTask] = useState<string>("");
 	const [todo, setTodo] = useState<ITask[]>(getLocalStorage());
-	const [filterProduct, setFilterProduct] = useState('all');
+	const [filterProduct, setFilterProduct] = useState("all");
 	const [filterLi, setFilterLi] = useState(todo);
 
 	useEffect(() => {
-		localStorage.setItem('tasks', JSON.stringify(todo));
+		localStorage.setItem("tasks", JSON.stringify(todo));
 
-		if (filterProduct === 'all') return setFilterLi([...todo]);
+		if (filterProduct === "all") return setFilterLi([...todo]);
 
-		if (filterProduct === 'active') {
+		if (filterProduct === "active") {
 			return setFilterLi([
 				...todo.filter(({completed}) => (completed === false ? {...todo} : null))
 			]);
 		}
 
-		if (filterProduct === 'completed') {
+		if (filterProduct === "completed") {
 			return setFilterLi([
 				...todo.filter(({completed}) => (completed === true ? {...todo} : null))
 			]);
@@ -45,23 +45,23 @@ function App(): JSX.Element {
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const randomId = () => Math.floor(Math.random() * 10000);
-		const newTask = {id: randomId(), taskName: task, completed: false};
+		const newTask = {TaskId: randomId(), taskName: task, completed: false};
 
-		if (newTask.taskName.trim() === '') return;
+		if (newTask.taskName.trim() === "") return;
 
 		setTodo([...todo, newTask]);
 		setFilterLi([...todo, newTask]);
-		setTask('');
+		setTask("");
 	};
 
-	const handleDelete = (targetID: number) => {
-		const deleteTarget = todo.filter(taskList => taskList.id !== targetID);
+	const handleDelete = (targetId: number) => {
+		const deleteTarget = todo.filter(taskList => taskList.TaskId !== targetId);
 		setTodo(deleteTarget);
 	};
 
-	const handleClick = (targetID: number) => {
+	const handleClick = (targetId: number) => {
 		const newTasks = todo.map(task => {
-			if (task.id === targetID) return {...task, completed: !task.completed};
+			if (task.TaskId === targetId) return {...task, completed: !task.completed};
 			return task;
 		});
 
@@ -88,14 +88,14 @@ function App(): JSX.Element {
 			<div className='tasksContainer'>
 				<ul className='taskList'>
 					{filterLi
-						.map(({taskName, id, completed}: ITask) => (
+						.map(({taskName, TaskId, completed}: ITask) => (
 							<Tasks
-								key={id}
-								id={id}
+								key={TaskId}
+								TaskId={TaskId}
 								taskName={taskName}
 								completed={completed}
-								handleClick={() => handleClick(id)}
-								handleDelete={() => handleDelete(id)}
+								handleClick={() => handleClick(TaskId)}
+								handleDelete={() => handleDelete(TaskId)}
 							/>
 						))
 						.reverse()}

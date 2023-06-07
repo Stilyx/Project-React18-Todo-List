@@ -1,5 +1,5 @@
 export interface ITask {
-	id: number;
+	TaskId: number;
 	taskName: string;
 	completed: boolean;
 	handleClick?: (id: React.SetStateAction<number>) => void;

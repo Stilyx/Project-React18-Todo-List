@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 
 // Style
 
-import './Header.css';
+import "./Header.css";
 
 // interfaces
-import {IHeader} from '../interfaces/IHeader';
+import {IHeader} from "../interfaces/IHeader";
 
 function Header({changeTheme}: IHeader) {
 	return (
 		<header className='header'>
 			<h1>TODO</h1>
-			<span className='logo' onClick={() => changeTheme()}></span>
+			<img className='logo' onClick={() => changeTheme()} alt='logoimage' />
 		</header>
 	);
 }

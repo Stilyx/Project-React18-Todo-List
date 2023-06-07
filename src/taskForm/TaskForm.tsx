@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
 // Styles
-import './TaskForm.css';
+import "./TaskForm.css";
 
 // interface
-import {ITaskForm} from '../interfaces/ITaskForm';
+import {ITaskForm} from "../interfaces/ITaskForm";
 
 function TaskForm({handleSubmit, task, handleChange}: ITaskForm): JSX.Element {
 	return (
-		<form action='#' className='form' onSubmit={handleSubmit}>
+		<form action='#' className='form' onSubmit={handleSubmit} id='taskForm'>
 			<input
 				type='text'
 				placeholder='Create a new todo…'

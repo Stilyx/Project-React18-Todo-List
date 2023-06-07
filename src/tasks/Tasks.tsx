@@ -1,17 +1,17 @@
 // Styles
-import './Tasks.css';
+import "./Tasks.css";
 
 // inteface
-import {ITask} from '../interfaces/ITask';
+import {ITask} from "../interfaces/ITask";
 
-function Tasks({id, taskName, completed, handleClick, handleDelete}: ITask) {
+function Tasks({TaskId, taskName, completed, handleClick, handleDelete}: ITask) {
 	return (
-		<div className='tasks'>
-			<li key={id} className={completed ? 'checked' : ''} onClick={() => handleClick!(id)}>
+		<ul className='tasks'>
+			<li key={TaskId} className={completed ? "checked" : ""} onClick={() => handleClick!(TaskId)}>
 				{taskName}
 			</li>
-			<span className='delete' onClick={() => handleDelete!(id)}></span>
-		</div>
+			<button className='delete' onClick={() => handleDelete!(TaskId)}></button>
+		</ul>
 	);
 }
 

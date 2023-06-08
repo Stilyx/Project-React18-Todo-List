@@ -2,76 +2,39 @@ import {fireEvent, render, screen} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Tasks from "./Tasks";
 import userEvent from "@testing-library/user-event";
+import {taskMock, todo} from "./Mocks";
 
 describe("Task Component", () => {
 	it("should render task", () => {
-		render(
-			<Tasks
-				TaskId={10}
-				taskName='Oi'
-				completed={false}
-				handleClick={() => {}}
-				handleDelete={() => {}}
-			/>
-		);
+		render(<Tasks {...taskMock} />);
 
-		const list = screen.getByText("Oi");
+		const list = screen.getByText("Daniel");
 		expect(list).toBeInTheDocument();
 	});
 	it("should complete task", () => {
-		let todo = [
-			{id: 15, taskName: "Daniel", completed: false},
-			{id: 11, taskName: "joão", completed: false},
-			{id: 13, taskName: "gustavo", completed: false}
-		];
+		let newTask = todo;
 		const handleClick = (targetName: string) => {
-			const newTasks = todo.map(task => {
-				if (task.taskName === targetName) return {...task, completed: !task.completed};
-				return task;
-			});
-
-			todo = newTasks;
+			newTask = newTask.map(task =>
+				task.taskName === targetName ? {...task, completed: !task.completed} : task
+			);
 		};
 
-		render(
-			<Tasks
-				TaskId={10}
-				key={10}
-				taskName='Daniel'
-				completed={false}
-				handleClick={() => handleClick("Daniel")}
-			/>
-		);
+		render(<Tasks {...taskMock} handleClick={() => handleClick("Daniel")} />);
 
 		const list = screen.getByText("Daniel");
 		fireEvent.click(list);
-		expect(todo[0]).toHaveProperty("completed", true);
+		expect(newTask[0]).toHaveProperty("completed", true);
 	});
 	it("should delete task", async () => {
-		let todo = [
-			{id: 15, taskName: "Daniel"},
-			{id: 11, taskName: "joão"},
-			{id: 13, taskName: "gustavo"}
-		];
+		let newTodo = todo;
 		const handleDelete = (targetID: number) => {
-			const deleteTarget = todo.filter(taskList => taskList.id !== targetID);
-			todo = deleteTarget;
+			return (newTodo = newTodo.filter(taskList => taskList.id !== targetID));
 		};
-
-		render(
-			<Tasks
-				TaskId={10}
-				key={10}
-				taskName='teste'
-				completed={true}
-				handleClick={() => {}}
-				handleDelete={() => handleDelete(15)}
-			/>
-		);
+		render(<Tasks {...taskMock} handleClick={() => {}} handleDelete={() => handleDelete(15)} />);
 
 		const button = screen.getAllByRole("button");
-		expect(todo).toHaveLength(3);
+		expect(newTodo).toHaveLength(3);
 		userEvent.click(button[0]);
-		expect(todo).toHaveLength(2);
+		expect(newTodo).toHaveLength(2);
 	});
 });
